@@ -1,0 +1,10 @@
+.element__figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 15px 31px 21px;
+}
+
+.element__figcaption>*:last-child {
+  margin-left: 10px;
+}
