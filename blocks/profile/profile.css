@@ -4,6 +4,10 @@
   grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content) 1fr;
 }
 
+.profile > *:last-child {
+  min-width: 200px;
+}
+
 @media screen and (max-width: 950px) {
   .profile {
     margin: 0 27px 50px;

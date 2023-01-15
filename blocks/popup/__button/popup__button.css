@@ -18,9 +18,10 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 610px) {
+@media screen and (max-width: 660px) {
   .popup__button {
-    font-size: 14px;
+    aspect-ratio: 238/46;
+    font-size: 14px;  
     line-height: 17px;
   }
 }
