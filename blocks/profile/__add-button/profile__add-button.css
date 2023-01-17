@@ -5,7 +5,7 @@
   justify-self: end;
   align-self: center;
   cursor: pointer;
-
+  margin-left: 20px;
 }
 
 .add-button:last-child {

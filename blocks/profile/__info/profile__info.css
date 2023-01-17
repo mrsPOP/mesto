@@ -4,11 +4,13 @@
   justify-content: center;
   gap: 16px;
   color: #FFFFFF;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 770px) {
   .profile__info {
     margin-bottom: 36px;
-    align-items: center;
+    gap: 14px;
+    max-width: 90%;
   }
 }

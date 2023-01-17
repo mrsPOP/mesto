@@ -5,9 +5,15 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
+}
+
+@media screen and (max-width: 770px) {
+  .profile__description {
+    align-self: center;
+  }
 }
 
 @media screen and (max-width: 450px) {

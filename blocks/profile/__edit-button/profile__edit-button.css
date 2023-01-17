@@ -1,7 +1,14 @@
 .profile__edit-button {
   max-width: 24px;
+  aspect-ratio: 1 / 1;
 }
 
 .profile__edit-button:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 450px) {
+  .profile__edit-button {
+    max-width: 18px;
+  }
 }
