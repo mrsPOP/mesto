@@ -1,5 +1,5 @@
 .element__image {
   display: block;
   width: 100%;
-  aspect-ratio: auto;
+  aspect-ratio: 1 / 1;
 }

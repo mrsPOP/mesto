@@ -13,6 +13,7 @@
 @media screen and (max-width: 770px) {
   .profile__description {
     align-self: center;
+    max-width: 90%;
   }
 }
 

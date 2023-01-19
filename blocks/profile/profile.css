@@ -1,11 +1,7 @@
 .profile {
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
   display: grid;
   grid-template-columns: minmax(min-content, max-content) 1fr 170px;
-}
-
-.profile > *:last-child {
-  min-width: 200px;
 }
 
 @media screen and (max-width: 950px) {
@@ -17,8 +13,16 @@
 @media screen and (max-width: 770px) {
   .profile {
     grid-template-columns: 1fr;
-    justify-content: center;  
+    justify-content: center;
     justify-items: center;
     margin-bottom: 36px;
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .profile {
+    width: calc(100% - 36px);
+    margin: 0 auto 36px;
   }
 }

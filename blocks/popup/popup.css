@@ -9,5 +9,5 @@
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, .5);
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', sans-serif;
 }

@@ -10,11 +10,18 @@
   overflow: hidden;
 }
 
+@media screen and (max-width: 770px) {
+  .profile__name {
+    transform: translateX(24px);
+    max-width: calc(100% - 80px);
+  }
+}
+
 @media screen and (max-width: 450px) {
   .profile__name {
+    transform: translateX(18px);
+    max-width: calc(100% - 60px);
     font-size: 27px;
     line-height: 33px;
-    /* max-width: calc(100% - 28px); */
-    /* transform: translateX(18px); */
   }
 }

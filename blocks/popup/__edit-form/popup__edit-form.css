@@ -1,7 +1,6 @@
-.popup__container {
+.popup__edit-form {
   margin: 0;
-  padding: 0 36px 0;
-  position: relative;
+  padding: 34px 36px 37px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,12 +10,11 @@
   background: #fff;
   width: 430px;
   box-sizing: border-box;
-  aspect-ratio: 43/33;
 }
 
 @media screen and (max-width: 660px) {
-  .popup__container {
+  .popup__edit-form {
     width: 282px;
-    aspect-ratio: 282/332;
+    padding: 25px 22px;
   }
 }

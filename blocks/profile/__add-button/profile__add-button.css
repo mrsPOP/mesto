@@ -1,29 +1,37 @@
-.add-button {
+.profile__add-button {
   margin: 0;
   padding: 0;
   border: 0;
   justify-self: end;
   align-self: center;
-  cursor: pointer;
   margin-left: 20px;
+  background: #000;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+  width: 150px;
+  height: 50px;
 }
 
-.add-button:last-child {
-  display: none;
+.profile__add-button:hover {
+  opacity: .6;
 }
-
-.add-button:hover {
-  opacity: 0.6;
-}
-
 
 @media screen and (max-width: 770px) {
-  .add-button {
+  .profile__add-button {
     justify-self: center;
-    display: none;
+    margin-left: 0;
   }
+}
 
-  .add-button:last-child {
-    display: flex;
+@media screen and (max-width: 450px) {
+  .profile__add-button {
+    width: 100%;
+    max-width: 282px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .profile__add-button {
+    width: 282px;
   }
 }

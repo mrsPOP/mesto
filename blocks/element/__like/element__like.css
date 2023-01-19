@@ -1,3 +1,11 @@
+.element__like {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  aspect-ratio: auto;
+}
+
 .element__like:hover {
-  opacity: .6;
+  opacity: .5;
 }
