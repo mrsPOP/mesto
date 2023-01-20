@@ -26,7 +26,7 @@ editButton.addEventListener('click', function () {
 });
 
 closeButton.addEventListener('click', function () {
-  formElement.classList.remove('popup_opened');
+  closePopup();
 });
 
 formElement.addEventListener('submit', formSubmitHandler);

@@ -8,12 +8,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: 100%;
 }
 
 @media screen and (max-width: 770px) {
   .profile__description {
-    align-self: center;
     max-width: 90%;
+    text-align: center;
   }
 }
 
