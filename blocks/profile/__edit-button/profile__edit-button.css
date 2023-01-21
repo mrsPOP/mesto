@@ -3,6 +3,7 @@
   background: #000;
   border: 1px solid #fff;
   width: 24px;
+  min-width: 24px;
   height: 24px;
   transform: translateY(3px);
   background-image: url('../../../images/pen.svg');
