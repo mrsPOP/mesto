@@ -70,7 +70,9 @@ function closePopup () {
   formElement.classList.remove('popup_opened');
   addPlaceForm.classList.remove('popup_content-visible', 'display-none');
   editForm.classList.remove('popup_content-visible', 'display-none');
-  document.querySelector('.card-info').remove();
+  if (document.querySelector('.card-info') != null) {
+    document.querySelector('.card-info').remove();
+  }
 }
 
 closeButton.addEventListener('click', closePopup);
