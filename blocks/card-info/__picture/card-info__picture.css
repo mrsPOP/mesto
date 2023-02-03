@@ -1,9 +1,0 @@
-.card-info__picture {
-  max-height: calc(100vh - 90px - 60px);
-}
-
-@media screen and (max-width: 1024px) {
-  .card-info__picture {
-    max-width: 80vw;
-  }
-}

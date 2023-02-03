@@ -31,6 +31,7 @@ const editForm = document.querySelector('.popup__form_el_edit');
 const closeButton = document.querySelector('.popup__close-button');
 const nameInput = formElement.querySelector('.popup__input_el_name');
 const jobInput = formElement.querySelector('.popup__input_el_description');
+const cardInfo = document.querySelector('.popup__card-info');
 
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
@@ -38,10 +39,12 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
 
-// TO DISPLAY CARDS FROM THE LIST "initialCards"
 
 const cardTemplate = document.querySelector('#card').content;
 const cardsList = document.querySelector('.elements-list');
+
+
+// TO DISPLAY CARDS FROM THE LIST "initialCards"
 
 function createCardInList (item) {
   const card = cardTemplate.querySelector('.elements-list__item').cloneNode(true);
@@ -70,9 +73,7 @@ function closePopup () {
   formElement.classList.remove('popup_opened');
   addPlaceForm.classList.remove('popup_content-visible', 'display-none');
   editForm.classList.remove('popup_content-visible', 'display-none');
-  if (document.querySelector('.card-info') != null) {
-    document.querySelector('.card-info').remove();
-  }
+  cardInfo.classList.remove('popup_content-visible', 'display-none');
 }
 
 closeButton.addEventListener('click', closePopup);
@@ -91,6 +92,7 @@ function formSubmitHandler (evt) {
 
 editButton.addEventListener('click', function () {
   formElement.classList.add('popup_opened');
+  cardInfo.classList.add('display-none');
   addPlaceForm.classList.add('display-none');
   editForm.classList.add('popup_content-visible');
   nameInput.value = profileName.textContent;
@@ -105,6 +107,7 @@ editForm.addEventListener('submit', formSubmitHandler);
 addButton.addEventListener('click', function () {
   formElement.classList.add('popup_opened');
   editForm.classList.add('display-none');
+  cardInfo.classList.add('display-none');
   addPlaceForm.classList.add('popup_content-visible');
 });
 
@@ -159,8 +162,6 @@ removeCardButtons.forEach((el) => {
 
 // TO SEE CARD-INFO CLOSER
 
-const cardInfoTemplate = document.querySelector('#scaled-card').content;
-const popupContent = document.querySelector('.popup__content');
 const cardImages = document.querySelectorAll('.element__image');
 
 function openCard (event) {
@@ -169,11 +170,9 @@ function openCard (event) {
   editForm.classList.add('display-none');
   addPlaceForm.classList.add('display-none');
 
-  const cardInfo = cardInfoTemplate.querySelector('.card-info').cloneNode(true);
-  cardInfo.querySelector('.card-info__picture').src = event.target.getAttribute('src');
-  cardInfo.querySelector('.card-info__description').textContent = event.target.closest('.element').querySelector('.element__description').textContent;
+  cardInfo.querySelector('.popup__card-picture').src = event.target.getAttribute('src');
+  cardInfo.querySelector('.popup__card-description').textContent = event.target.closest('.element').querySelector('.element__description').textContent;
 
-  popupContent.prepend(cardInfo);
   cardInfo.classList.add('popup_content-visible');
 }
 
