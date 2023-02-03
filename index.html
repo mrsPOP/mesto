@@ -45,25 +45,25 @@
           <input
             class="popup__input popup__input_el_name"
             type="text"
-            value="Жак-Ив Кусто"
+            value=""
           />
           <input
             class="popup__input popup__input_el_description"
             type="text"
-            value="Исследователь океана"
+            value=""
           />
           <button class="popup__button" type="submit">Сохранить</button>
         </form>
         <form class="popup__form popup__form_el_add" name="add-new-place-form">
           <h3 class="popup__header">Новое место</h3>
           <input
-            class="popup__input"
+            class="popup__input popup__input_card-name"
             type="text"
             value=""
             placeholder="Название"
           />
           <input
-            class="popup__input"
+            class="popup__input popup__input_card-link"
             type="text"
             value=""
             placeholder="Ссылка на картинку"
@@ -88,6 +88,12 @@
           <button class="element__remove-button" type="button" aria-label="удалить"></button>
         </article>
       </li>
+    </template>
+    <template id="scaled-card">
+      <div class="card-info">
+        <img src="" alt="" class="card-info__picture">
+        <p class="card-info__description"></p>
+      </div>
     </template>
     <script src="./scripts/index.js"></script>
   </body>
