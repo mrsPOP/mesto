@@ -38,8 +38,6 @@ const profileDescription = document.querySelector('.profile__description');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
-
-
 const cardTemplate = document.querySelector('#card').content;
 const cardsList = document.querySelector('.elements-list');
 
