@@ -123,6 +123,7 @@ function cardCreateFormHandler (evt) {
   const newCard = createCardInList(initialCards[0]);
   newCard.querySelector('.element__like').addEventListener('click', likeToggler);
   newCard.querySelector('.element__remove-button').addEventListener('click', cardRemover);
+  newCard.querySelector('.element__image').addEventListener('click', openCard);
   addCardToPage(newCard);
   closePopup();
   evt.target.reset();
