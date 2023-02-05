@@ -1,4 +1,5 @@
 .popup__form {
+  position: relative;
   margin: 0;
   padding: 34px 36px 37px;
   display: flex;
@@ -10,8 +11,6 @@
   background: #fff;
   width: 430px;
   box-sizing: border-box;
-  visibility: hidden;
-  opacity: 0;
 }
 
 @media screen and (max-width: 660px) {

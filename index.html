@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Исследователь океана</title>
   </head>
+
   <body class="body">
     <div class="page">
       <header class="header">
@@ -37,45 +38,54 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
-    <section class="popup">
-      <div class="popup__content">
-        <form class="popup__form popup__form_el_edit" name="edit-form">
-          <h3 class="popup__header">Редактировать профиль</h3>
-          <input
-            class="popup__input popup__input_el_name"
-            type="text"
-            value=""
-          />
-          <input
-            class="popup__input popup__input_el_description"
-            type="text"
-            value=""
-          />
-          <button class="popup__button" type="submit">Сохранить</button>
-        </form>
-        <form class="popup__form popup__form_el_add" name="add-new-place-form">
-          <h3 class="popup__header">Новое место</h3>
-          <input
-            class="popup__input popup__input_card-name"
-            type="text"
-            value=""
-            placeholder="Название"
-          />
-          <input
-            class="popup__input popup__input_card-link"
-            type="text"
-            value=""
-            placeholder="Ссылка на картинку"
-          />
-          <button class="popup__button" type="submit">Создать</button>
-        </form>
-        <div class="popup__card-info">
-          <img src="#" alt="" class="popup__card-picture">
-          <p class="popup__card-description"></p>
-        </div>
+
+    <div id="profilePopup" class="popup">
+      <form class="popup__form" name="edit-form">
         <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+        <h3 class="popup__header">Редактировать профиль</h3>
+        <input
+          class="popup__input popup__input_el_name"
+          type="text"
+          value=""
+        />
+        <input
+          class="popup__input popup__input_el_description"
+          type="text"
+          value=""
+        />
+        <button class="popup__button" type="submit">Сохранить</button>
+      </form>
+    </div>
+
+
+    <div id="cardPopup" class="popup">
+      <form class="popup__form" name="add-new-place-form">
+        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+        <h3 class="popup__header">Новое место</h3>
+        <input
+          class="popup__input popup__input_card-name"
+          type="text"
+          value=""
+          placeholder="Название"
+        />
+        <input
+          class="popup__input popup__input_card-link"
+          type="text"
+          value=""
+          placeholder="Ссылка на картинку"
+        />
+        <button class="popup__button" type="submit">Создать</button>
+      </form>
+    </div>
+
+    <div id="imagePopup" class="popup popup_opacity_total">
+      <div class="popup__card-info">
+        <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+        <img src="#" alt="" class="popup__card-picture">
+        <p class="popup__card-description"></p>
       </div>
-    </section>
+    </div>
+
     <template id="card">
       <li class="elements-list__item">
         <article class="element">
@@ -85,13 +95,14 @@
           alt=""
           />
           <div class="element__content">
+            <button class="element__remove-button" type="button" aria-label="удалить"></button>
             <p class="element__description"></p>
             <button class="element__like" type="button" aria-label="поставить лайк"></button>
           </div>
-          <button class="element__remove-button" type="button" aria-label="удалить"></button>
         </article>
       </li>
     </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

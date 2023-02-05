@@ -9,5 +9,5 @@
 * HTML
 * CSS
 * Адаптивная вёрстка (Flexbox, Grid, медиа-запросы)
-* Методолгия БЭМ
+* БЭМ Nested
 * JavaScript
