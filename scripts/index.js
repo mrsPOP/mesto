@@ -134,8 +134,6 @@ function likeToggler(evt) {
 
 // TO REMOVE A CARD
 
-const removeCardButtons = document.querySelectorAll(".element__remove-button");
-
 function cardRemover(evt) {
   const cardToRemove = evt.target.closest(".elements-list__item");
   cardToRemove.remove();
@@ -144,10 +142,9 @@ function cardRemover(evt) {
 
 // TO SEE CARD-INFO CLOSER
 
-const cardImages = document.querySelectorAll(".element__image");
-
 function openCard(name, link) {
   openPopup(imagePopup);
   imagePopupPhoto.src = link;
+  imagePopupPhoto.alt = name;
   imagePopupDescription.textContent = name;
 }
