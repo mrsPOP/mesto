@@ -1,7 +1,7 @@
 const profilePopup = document.querySelector("#profilePopup");
 const cardPopup = document.querySelector("#cardPopup");
 const imagePopup = document.querySelector("#imagePopup");
-const popups = document.querySelectorAll(".popup");
+const popups = Array.from(document.querySelectorAll(".popup"));
 
 const popupNameInput = cardPopup.querySelector(".popup__input_card-name");
 const popupLinkInput = cardPopup.querySelector(".popup__input_card-link");
@@ -55,7 +55,7 @@ function addCardToPage(card) {
 // TO DISPLAY CARDS FROM THE LIST "initialCards"
 
 function addCardsToList() {
-  initialCards.forEach(function (el) {
+  initialCards.forEach((el) => {
     addCardToPage(createCardInList(el));
   });
 }
@@ -75,16 +75,17 @@ closeButtons.forEach((el) => {
 });
 
 function findOpenedPopup () {
-  popups.forEach((popup) => {
-    if (popup.classList.contains('popup_opened')) {
-      return popup;
-    }
+  return popups.find((popup) => {
+    return popup.classList.contains('popup_opened');
   });
 }
 
 document.addEventListener('keydown', function (evt) {
   if (evt.key === 'Escape') {
-    closePopup(findOpenedPopup());
+    const popupToClose = findOpenedPopup();
+    if (popupToClose !== undefined) {
+      closePopup(popupToClose);
+    }
   }
 });
 
