@@ -1,8 +1,13 @@
+import { Card } from "./Card.js";
+import { initialCards } from "./cards.js";
+import { FormValidator } from "./FormValidator.js";
+
 const profilePopup = document.querySelector("#profilePopup");
 const cardPopup = document.querySelector("#cardPopup");
 const imagePopup = document.querySelector("#imagePopup");
 const popups = Array.from(document.querySelectorAll(".popup"));
 
+const forms = Array.from(document.forms);
 const profileForm = document.forms["edit-form"];
 const cardForm = document.forms["add-new-place-form"];
 
@@ -19,35 +24,10 @@ const profileDescription = document.querySelector(".profile__description");
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
-const cardTemplate = document.querySelector("#card").content;
 const cardsContainer = document.querySelector(".elements-list");
 
 
-// TO CREATE A CARD
-
-function createCardInList(item) {
-  const card = cardTemplate
-    .querySelector(".elements-list__item")
-    .cloneNode(true);
-  card.querySelector(".element__description").textContent = item.name;
-
-  const cardImage = card.querySelector(".element__image");
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  cardImage.addEventListener("click", () => openCard(item.name, item.link));
-
-  card
-  .querySelector(".element__remove-button")
-  .addEventListener("click", removeCard);
-
-  card.querySelector(".element__like")
-  .addEventListener("click", toggleLike);
-
-  return card;
-}
-
-
-// TO DISPLAY CARDS ON A PAGE
+// TO DISPLAY CARD ON A PAGE
 
 function addCardToPage(card) {
   cardsContainer.prepend(card);
@@ -58,7 +38,8 @@ function addCardToPage(card) {
 
 function addCardsToList() {
   initialCards.forEach((el) => {
-    addCardToPage(createCardInList(el));
+    const card = new Card(el, '.elements-list__item', openCard);
+    addCardToPage(card.generateCard());
   });
 }
 
@@ -136,27 +117,13 @@ function takeValuesFromInput () {
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  addCardToPage(createCardInList(takeValuesFromInput()));
+  const card = new Card(takeValuesFromInput(), '.elements-list__item', openCard);
+  addCardToPage(card.generateCard());
   closePopup(cardPopup);
   evt.target.reset();
 }
 
 cardForm.addEventListener("submit", handleAddCardFormSubmit);
-
-
-// TO LIKE A CARD
-
-function toggleLike(evt) {
-  evt.target.classList.toggle("element__like_active");
-}
-
-
-// TO REMOVE A CARD
-
-function removeCard(evt) {
-  const cardToRemove = evt.target.closest(".elements-list__item");
-  cardToRemove.remove();
-}
 
 
 // TO SEE CARD-INFO CLOSER
@@ -167,3 +134,18 @@ function openCard(name, link) {
   imagePopupPhoto.alt = name;
   imagePopupDescription.textContent = name;
 }
+
+
+// TO ENABLE VALIDATION
+
+const settings = {
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error'
+};
+
+forms.forEach((form) => {
+  const formToValidate = new FormValidator(settings, form);
+  formToValidate.enableValidation();
+});
