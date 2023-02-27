@@ -7,7 +7,6 @@ const cardPopup = document.querySelector("#cardPopup");
 const imagePopup = document.querySelector("#imagePopup");
 const popups = Array.from(document.querySelectorAll(".popup"));
 
-const forms = Array.from(document.forms);
 const profileForm = document.forms["edit-form"];
 const cardForm = document.forms["add-new-place-form"];
 
@@ -38,8 +37,7 @@ function addCardToPage(card) {
 
 function addCardsToList() {
   initialCards.forEach((el) => {
-    const card = new Card(el, '.elements-list__item', openCard);
-    addCardToPage(card.generateCard());
+    addCardToPage(createCard(el, '#card', openCard));
   });
 }
 
@@ -62,9 +60,7 @@ popups.forEach((popup) => {
 });
 
 function findOpenedPopup () {
-  return popups.find((popup) => {
-    return popup.classList.contains('popup_opened');
-  });
+  return document.querySelector('.popup_opened');
 }
 
 function closeByEscape(evt) {
@@ -95,6 +91,7 @@ function handleEditFormSubmit(evt) {
 
 editButton.addEventListener("click", function () {
   openPopup(profilePopup);
+  profileValidation.toggleButtonState();
   nameInput.value = profileName.textContent;
   jobInput.value = profileDescription.textContent;
 });
@@ -104,8 +101,14 @@ profileForm.addEventListener("submit", handleEditFormSubmit);
 
 // TO CREATE A NEW CARD
 
-addButton.addEventListener("click", function (evt) {
+function createCard (data, cardTemplate, openCard) {
+  const card = new Card(data, cardTemplate, openCard);
+  return card.generateCard();
+}
+
+addButton.addEventListener("click", function () {
   openPopup(cardPopup);
+  newCardValidation.toggleButtonState();
 });
 
 function takeValuesFromInput () {
@@ -117,8 +120,7 @@ function takeValuesFromInput () {
 
 function handleAddCardFormSubmit(evt) {
   evt.preventDefault();
-  const card = new Card(takeValuesFromInput(), '.elements-list__item', openCard);
-  addCardToPage(card.generateCard());
+  addCardToPage(createCard(takeValuesFromInput(), '#card', openCard));
   closePopup(cardPopup);
   evt.target.reset();
 }
@@ -145,7 +147,8 @@ const settings = {
   inputErrorClass: 'popup__input_type_error'
 };
 
-forms.forEach((form) => {
-  const formToValidate = new FormValidator(settings, form);
-  formToValidate.enableValidation();
-});
+const profileValidation = new FormValidator(settings, profileForm);
+const newCardValidation = new FormValidator(settings, cardForm);
+
+profileValidation.enableValidation();
+newCardValidation.enableValidation();
