@@ -5,6 +5,14 @@ constructor (settings, formElement) {
   this._inactiveButtonClass = settings.inactiveButtonClass;
   this._inputErrorClass = settings.inputErrorClas;
   this._formElement = formElement;
+  this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+}
+
+resetValidation () {
+  this._toggleButtonState();
+  this._inputList.forEach((inputElement) => {
+    this._hideInputError(inputElement)
+  });
 }
 
 _showInputError (inputElement, errorMessage) {
@@ -28,13 +36,12 @@ _checkInputValidity (inputElement) {
 }
 
 _setEventListeners () {
-  this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
   this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
-  this.toggleButtonState();
+  this._toggleButtonState();
   this._inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       this._checkInputValidity(inputElement);
-      this.toggleButtonState();
+      this._toggleButtonState();
     });
   });
 }
@@ -49,7 +56,7 @@ _hasInvalidInput () {
   });
 }
 
-toggleButtonState () {
+_toggleButtonState () {
   if (this._hasInvalidInput()) {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.setAttribute('disabled', true);

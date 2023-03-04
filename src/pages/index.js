@@ -8,14 +8,11 @@ import { UserInfo } from "../components/UserInfo.js";
 import {
   imagePopupPhoto,
   imagePopupDescription,
-  nameInput,
-  jobInput,
   editButton,
   addButton,
-  popupNameInput,
-  popupLinkInput,
   profileForm,
   cardForm,
+  settings,
   initialCards,
 } from "../utils/constants.js";
 
@@ -39,28 +36,26 @@ cardList.renderItems();
 const popupOpenCard = new PopupWithImage("#imagePopup");
 popupOpenCard.setEventListeners();
 
-const popupNewCard = new PopupWithForm("#cardPopup", (evt) => {
+const popupNewCard = new PopupWithForm({popupSelector: "#cardPopup", handleSubmit: (evt) => {
   evt.preventDefault();
+  const {'new-place-name-input': name, 'new-place-link-input': link} = popupNewCard._getInputValues();
   cardList.addItem(
     createCard(
-      {
-        name: popupNameInput.value,
-        link: popupLinkInput.value,
-      },
+      {name, link},
       "#card",
       openCard
     )
   );
   popupNewCard.close();
-});
+}});
 
 popupNewCard.setEventListeners();
 
-const popupEditProfile = new PopupWithForm("#profilePopup", (evt) => {
+const popupEditProfile = new PopupWithForm({popupSelector: "#profilePopup", handleSubmit: (evt) => {
   evt.preventDefault();
-  profileInfo.setUserInfo(nameInput.value, jobInput.value);
+  profileInfo.setUserInfo(popupEditProfile._getInputValues());
   popupEditProfile.close();
-});
+}})
 
 popupEditProfile.setEventListeners();
 
@@ -68,7 +63,7 @@ popupEditProfile.setEventListeners();
 
 addButton.addEventListener("click", function () {
   popupNewCard.open();
-  newCardValidation.toggleButtonState();
+  newCardValidation.resetValidation();
 });
 
 function createCard(data, cardTemplate, openCard) {
@@ -85,28 +80,17 @@ const profileInfo = new UserInfo({
 
 editButton.addEventListener("click", function () {
   popupEditProfile.open();
-  profileValidation.toggleButtonState();
-  nameInput.value = profileInfo.getUserInfo()["name"];
-  jobInput.value = profileInfo.getUserInfo()["description"];
+  profileValidation.resetValidation();
+  popupEditProfile.setInputValues(profileInfo.getUserInfo());
 });
 
 // TO SEE CARD-INFO CLOSER
 
 function openCard(name, link) {
   popupOpenCard.open(name, link, imagePopupPhoto, imagePopupDescription);
-  imagePopupPhoto.src = link;
-  imagePopupPhoto.alt = name;
-  imagePopupDescription.textContent = name;
 }
 
 // TO ENABLE VALIDATION
-
-const settings = {
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-};
 
 const profileValidation = new FormValidator(settings, profileForm);
 const newCardValidation = new FormValidator(settings, cardForm);

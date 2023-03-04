@@ -1,17 +1,18 @@
 const imagePopupPhoto = document.querySelector(".popup__card-picture");
 const imagePopupDescription = document.querySelector(".popup__card-description");
 
-const nameInput = profilePopup.querySelector(".popup__input_el_name");
-const jobInput = profilePopup.querySelector(".popup__input_el_description");
-
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
-const popupNameInput = cardPopup.querySelector(".popup__input_card-name");
-const popupLinkInput = cardPopup.querySelector(".popup__input_card-link");
-
 const profileForm = document.forms["edit-form"];
 const cardForm = document.forms["add-new-place-form"];
+
+const settings = {
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+};
 
 const initialCards = [
   {
@@ -40,17 +41,13 @@ const initialCards = [
   },
 ];
 
-
 export {
   imagePopupPhoto,
   imagePopupDescription,
-  nameInput,
-  jobInput,
   editButton,
   addButton,
-  popupNameInput,
-  popupLinkInput,
   profileForm,
   cardForm,
+  settings,
   initialCards
 };

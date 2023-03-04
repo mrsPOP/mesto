@@ -5,11 +5,11 @@ export class UserInfo {
   }
 
   getUserInfo () {
-    return {name: this._profileName.textContent, description: this._profileDescription.textContent}
+    return {'profile-name-input': this._profileName.textContent, 'profile-description-input': this._profileDescription.textContent}
   }
 
-  setUserInfo (newName, newDescription) {
-    this._profileName.textContent = newName;
-    this._profileDescription.textContent = newDescription;
+  setUserInfo (data) {
+    this._profileName.textContent = data['profile-name-input'];
+    this._profileDescription.textContent = data['profile-description-input'];
   }
 }
