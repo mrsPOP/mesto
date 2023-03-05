@@ -38,7 +38,7 @@ popupOpenCard.setEventListeners();
 
 const popupNewCard = new PopupWithForm({popupSelector: "#cardPopup", handleSubmit: (evt) => {
   evt.preventDefault();
-  const {'new-place-name-input': name, 'new-place-link-input': link} = popupNewCard._getInputValues();
+  const {'new-place-name-input': name, 'new-place-link-input': link} = popupNewCard.getInputValues();
   cardList.addItem(
     createCard(
       {name, link},
@@ -53,7 +53,7 @@ popupNewCard.setEventListeners();
 
 const popupEditProfile = new PopupWithForm({popupSelector: "#profilePopup", handleSubmit: (evt) => {
   evt.preventDefault();
-  profileInfo.setUserInfo(popupEditProfile._getInputValues());
+  profileInfo.setUserInfo(popupEditProfile.getInputValues());
   popupEditProfile.close();
 }})
 
